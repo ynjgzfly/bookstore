@@ -44,6 +44,26 @@ columns.map((item) => {
   };
 });
 
+function EditText(value) {
+  const [edit, setEdit] = useState(false);
+  const [editValue, setEditValue] = useState(value);
+  return edit ? (
+    <Input
+      autoFocus
+      style={{ width: 120 }}
+      value={editValue}
+      onChange={(event) => setEditValue(event)}
+      onBlur={() => {
+        setEdit(false);
+      }}
+    />
+  ) : (
+    <div style={{ width: 100 }} onDoubleClick={() => setEdit(true)}>
+      {value || <span>&nbsp;</span>}
+    </div>
+  );
+}
+
 function ManageBooks() {
   const [books, setBooks] = useState(initBooks);
   const [search, setSearch] = useState("");
@@ -89,7 +109,7 @@ function ManageBooks() {
 
   return (
     <Card>
-      <Table rowKey={"id"} columns={columns} dataSource={books} />
+      {/* <Table rowKey={"id"} columns={columns} dataSource={books} /> */}
       <Table
         rowKey="id"
         columns={[
@@ -97,10 +117,12 @@ function ManageBooks() {
           {
             title: "删除",
             dataIndex: "delete",
-            render: (record) => (
+            render: (text, record) => (
               <Button
                 onClick={() => {
-                  const newBooks = books.filter((item) => item.id != record.id);
+                  const newBooks = books.filter((item) => {
+                    return item.id != record.id;
+                  });
                   setBooks(newBooks);
                 }}
               >
