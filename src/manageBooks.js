@@ -17,7 +17,7 @@ import {
 import styles from "./index.css";
 import { Router } from "react-router-dom";
 import { PlusOutlined, UserOutlined } from "@ant-design/icons";
-import {initBooks} from "./bookLists";
+import { initBooks } from "./bookLists";
 import { useState } from "react";
 import { render } from "@testing-library/react";
 
@@ -87,9 +87,31 @@ function ManageBooks() {
   //   };
   // });
 
-  
   return (
-        <Table columns={columns} dataSource={initBooks}/>
+    <Card>
+      <Table rowKey={"id"} columns={columns} dataSource={books} />
+      <Table
+        rowKey="id"
+        columns={[
+          ...columns,
+          {
+            title: "删除",
+            dataIndex: "delete",
+            render: (record) => (
+              <Button
+                onClick={() => {
+                  const newBooks = books.filter((item) => item.id != record.id);
+                  setBooks(newBooks);
+                }}
+              >
+                删除
+              </Button>
+            ),
+          },
+        ]}
+        dataSource={books}
+      />
+    </Card>
     // <Table
     //   rowKey={"id"}
     //   columns={[
