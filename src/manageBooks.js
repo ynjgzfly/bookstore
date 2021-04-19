@@ -68,48 +68,8 @@ function ManageBooks() {
   const [books, setBooks] = useState(initBooks);
   const [search, setSearch] = useState("");
 
-  // columns.forEach((item) => {
-  //   const { dataIndex, title } = item;
-  //   item.filterDropdown = ({ setSelectedKeys, selectedKeys, confirm }) => (
-  //     <div style={{ padding: 8 }}>
-  //       <Input
-  //         allowClear
-  //         ref={this.searchInput}
-  //         placeholder={`搜索 ${title}`}
-  //         value={selectedKeys[0]}
-  //         onChange={(e) =>
-  //           setSelectedKeys(e.target.value ? [e.target.value] : [])
-  //         }
-  //         onPressEnter={confirm}
-  //         style={{ width: 188, marginBottom: 8, display: "block" }}
-  //       />
-  //       <Button
-  //         type="primary"
-  //         onClick={confirm}
-  //         size="small"
-  //         style={{ width: 90 }}
-  //       >
-  //         搜索
-  //       </Button>
-  //     </div>
-  //   );
-  //   item.onFilter = (value, record) =>
-  //     record[dataIndex]
-  //       ? record[dataIndex]
-  //           .toString()
-  //           .toLowerCase()
-  //           .includes(value.toLowerCase())
-  //       : "";
-  //   item.onFilterDropdownVisibleChange = (visible) => {
-  //     if (visible) {
-  //       setTimeout(() => this.searchInput.current.select(), 100);
-  //     }
-  //   };
-  // });
-
   return (
     <Card>
-      {/* <Table rowKey={"id"} columns={columns} dataSource={books} /> */}
       <Table
         rowKey="id"
         columns={[
@@ -134,62 +94,6 @@ function ManageBooks() {
         dataSource={books}
       />
     </Card>
-    // <Table
-    //   rowKey={"id"}
-    //   columns={[
-    //     ...columns.map((item) => ({
-    //       ...item,
-    //       render: (text, record) => (
-    //         <EditText
-    //           onChange={(value) => {
-    //             // const newData = [...books];
-    //             // // newData.find(col => col.id === record.id)[item.dataIndex] = value;
-    //             //
-    //             // record[item.dataIndex] = value;
-    //             // this.setState({orData: initBooks, renderData: initBooks});
-    //             //
-    //             // console.log(record);
-    //             // this.setState({record: record});
-    //           }}
-    //           // onBlur={this.updateUser}
-    //         >
-    //           {text}
-    //         </EditText>
-    //       ),
-    //     })),
-    //     {
-    //       name: "操作",
-    //       key: "del",
-    //       render: (record) => (
-    //         <Button
-    //           onClick={() => {
-    //             // let newOrData = initBooks.filter(item => item.username !== record.username);
-    //             // console.log(record);
-    //             // let newRenderData = initBooks.filter(item => item.username !== record.username);
-    //             // record["theClass"]="";
-    //             // let newAddData=[record,...this.state.books];
-    //             // let newAddDataRender=[record,...this.state.books];
-    //             // console.log(newOrData);
-    //             // console.log(newRenderData);
-    //             // console.log(this.state.record);
-    //             // this.setState({
-    //             //     renderData: newRenderData,
-    //             //     orData: newOrData,
-    //             //     addData:newAddData,
-    //             //     addDataRender:newAddDataRender,
-    //             // }, () => {
-    //             //     this.deleteStudent();
-    //             //     this.handleSearch();
-    //             // });
-    //           }}
-    //         >
-    //           删除
-    //         </Button>
-    //       ),
-    //     },
-    //   ]}
-    //   dataSource={books}
-    // />
   );
 }
 
